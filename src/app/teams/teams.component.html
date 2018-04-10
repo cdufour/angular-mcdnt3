@@ -1,0 +1,35 @@
+<h2>Liste des équipes</h2>
+
+<div>
+  Affichage
+  <select [(ngModel)]="team_display">
+    <option value="a1">Fiches</option>
+    <option value="a2">Tableau</option>
+  </select>
+</div>
+
+<team
+  [hidden]="team_display == 'a2'"
+  style="margin-bottom:70px; display:block"
+  [team]="team"
+  *ngFor="let team of teams"></team>
+
+<table [hidden]="team_display == 'a1'" class="table table-bordered table-striped">
+
+  <tr>
+    <th>Logo</th>
+    <th>Nom</th>
+    <th>Stade</th>
+    <th>Entraîneur</th>
+    <th>Année de création</th>
+  </tr>
+  <tr *ngFor="let team of teams">
+    <td>
+      <img class="logo_small" src="{{team.getLogoUrl()}}" alt="team.name">
+    </td>
+    <td>{{ team.name }}</td>
+    <td>{{ team.stadium }}</td>
+    <td>{{ team.coach }}</td>
+    <td [ngClass]="{old: team.founded < 1950}">{{ team.founded }}</td>
+  </tr>
+</table>
