@@ -6,18 +6,24 @@ export class Team {
   coach: string;
   founded: number;
   stadium: string;
+  nbCup: number;
+  country: string;
 
   constructor(
     name: string,
     logo: string,
     coach: string,
     founded: number,
-    stadium: string) {
+    stadium: string,
+    nbCup: number,
+    country: string) {
     this.name = name;
     this.logo = logo;
     this.coach = coach;
     this.founded = founded;
     this.stadium = stadium;
+    this.nbCup = nbCup;
+    this.country = country;
   }
 
   getLogoUrl() {

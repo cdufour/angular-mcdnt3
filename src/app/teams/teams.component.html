@@ -15,13 +15,13 @@
   *ngFor="let team of teams"></team>
 
 <table [hidden]="team_display == 'a1'" class="table table-bordered table-striped">
-
   <tr>
     <th>Logo</th>
     <th>Nom</th>
     <th>Stade</th>
     <th>Entraîneur</th>
     <th>Année de création</th>
+    <th>Coupes</th>
   </tr>
   <tr *ngFor="let team of teams">
     <td>
@@ -31,5 +31,6 @@
     <td>{{ team.stadium }}</td>
     <td>{{ team.coach }}</td>
     <td [ngClass]="{old: team.founded < 1950}">{{ team.founded }}</td>
+    <td><cup [nb]="team.nbCup"></cup></td>
   </tr>
 </table>
