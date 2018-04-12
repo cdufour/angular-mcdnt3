@@ -1,5 +1,7 @@
 <h1>Introduction à Angular</h1>
 
+<p *ngFor="let color of teamService.getColors()">{{color}}</p>
+
 <div>
   <div *ngIf="!admin_status">
     <input type="checkbox" (click)="admin_status = !admin_status">Admin

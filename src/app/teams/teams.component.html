@@ -40,7 +40,7 @@
     <td>
       <img class="logo_small" src="{{team.getLogoUrl()}}" alt="team.name">
     </td>
-    <td>{{ team.name }}</td>
+    <td><a routerLink="/teams/{{team.name}}">{{ team.name }}</a></td>
     <td>{{ team.country }}</td>
     <td>{{ team.stadium }}</td>
     <td>{{ team.coach }}</td>

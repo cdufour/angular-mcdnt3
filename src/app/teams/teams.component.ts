@@ -38,7 +38,6 @@ export class TeamsComponent implements OnInit {
   }
 
   filterTeam() {
-    //console.log(this.countrySelected);
 
     if (this.countrySelected == '0') {
       // l'utilisateur n'a pas choisi de pays => afficher toutes les équipes

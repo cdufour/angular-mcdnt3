@@ -7,9 +7,9 @@ import { Team } from '../../model/Team';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
-  //team: Team = new Team('Juventus', 'juve-logo.png', 'Allegri', 1897);
+
   @Input('team') team: Team;
-  
+
   constructor() { }
 
   ngOnInit() {
