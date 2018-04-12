@@ -10,11 +10,13 @@ import { TeamsComponent } from './teams/teams.component';
 import { CupComponent } from './cup/cup.component';
 
 import { TeamService } from './team.service';
+import { AddTeamComponent } from './add-team/add-team.component';
 
 const appRoutes: Routes = [
   {path: 'intro', component: IntroComponent},
   {path: 'teams', component: TeamsComponent},
   {path: 'teams/:name', component: TeamComponent},
+  {path: 'admin', component: AddTeamComponent},
 ];
 
 @NgModule({
@@ -23,7 +25,8 @@ const appRoutes: Routes = [
     IntroComponent,
     TeamComponent,
     TeamsComponent,
-    CupComponent
+    CupComponent,
+    AddTeamComponent
   ],
   imports: [
     BrowserModule,

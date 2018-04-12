@@ -26,6 +26,10 @@ export class TeamService {
     return team[0]; // renvoie l'objet de type Team placé à l'indice 0
   }
 
+  public addTeam(team: Team) {
+    this.teams.push(team);
+  }
+
 }
 
 
