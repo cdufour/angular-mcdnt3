@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Team } from '../../model/Team';
 import { COUNTRIES } from '../datasources';
+import { TeamService } from '../team.service';
 
 @Component({
   selector: 'teams',
@@ -16,15 +17,12 @@ export class TeamsComponent implements OnInit {
   test: boolean = true;
   countrySelected: string;
 
-  constructor() { }
+  constructor(private teamService: TeamService) { }
 
   ngOnInit() {
     this.countries = COUNTRIES;
     this.team_display = 'a2';
-    let team1: Team = new Team('Juventus', 'juve-logo.png', 'Allegri', 1897, 'Juventus Stadium', 5, 'Italie');
-    let team2: Team = new Team('PSG', 'psg-logo.png', 'Emery', 1970, 'Parc des Princes', 3, 'France');
-    let team3: Team = new Team('Strasbourg', 'strasbourg-logo.png', 'Laurey', 1906, 'La Meinau', 1, 'France');
-    this.teams = [team1, team2, team3]; // initialisation de teams
+    this.teams = this.teamService.getTeams(); // initialisation de teams
     this.teamsFiltered = this.teams; // initialisation de teamsFiltered
   }
 
