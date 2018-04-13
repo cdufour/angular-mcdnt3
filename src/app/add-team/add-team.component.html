@@ -4,7 +4,15 @@
   <div class="row">
     <div class="col-md-6">
 
-
+      <div class="form-group">
+        <label for="logo">Logo (URL)</label>
+        <input
+          placeholder="http://"
+          id="logo"
+          type="text"
+          class="form-control"
+          [(ngModel)]="team.logo" >
+      </div>
 
         <div class="form-group">
           <label for="name">Nom</label>
@@ -35,7 +43,15 @@
 
         <div class="form-group">
           <label for="nbCup">Nombre de coupes</label>
-          <input id="nbCup" type="number" class="form-control" [(ngModel)]="team.nbCup">
+          <select id="nbCup" [(ngModel)]="team.nbCup" class="form-control">
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <cup [nb]="team.nbCup"></cup>
         </div>
 
         <button type="submit" class="btn btn-primary" (click)="onSubmit()">Enregistrer</button>

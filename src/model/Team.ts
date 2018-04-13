@@ -27,6 +27,11 @@ export class Team {
   }
 
   getLogoUrl() {
-    return this.logo_folder + this.logo;
+    let external: boolean = this.logo.substr(0,4) == 'http';
+    return external ? this.logo : this.logo_folder + this.logo;
   }
 }
+
+
+
+//

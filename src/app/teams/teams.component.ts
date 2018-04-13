@@ -15,7 +15,7 @@ export class TeamsComponent implements OnInit {
   team_display: string;
   countries: string[] = [];
   test: boolean = true;
-  countrySelected: string;
+  countrySelected: string = '0';
 
   constructor(private teamService: TeamService) { }
 
@@ -26,17 +26,7 @@ export class TeamsComponent implements OnInit {
     this.teamsFiltered = this.teams; // initialisation de teamsFiltered
   }
 
-  addTeam() {
-    let steaua: Team =
-      new Team('Steaua', 'psg-logo.png', 'Vlad Tepes', 1602, 'Ghencea', 6, 'Roumanie');
-
-    // ajout de l'objet steaua au tableau this.teams
-    this.teams.push(steaua);
-    //this.teams.splice(0, 1);
-  }
-
   filterTeam() {
-
     if (this.countrySelected == '0') {
       // l'utilisateur n'a pas choisi de pays => afficher toutes les équipes
       this.teamsFiltered = this.teams;
@@ -44,7 +34,6 @@ export class TeamsComponent implements OnInit {
       this.teamsFiltered =
         this.teams.filter((team: Team) => team.country == this.countrySelected);
     }
-
   }
 }
 
