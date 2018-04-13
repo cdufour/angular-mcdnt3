@@ -56,6 +56,16 @@ var teams = [
     founded: 1974,
     nbCup: 2
   },
+  {
+    id: 6,
+    logo: 'https://seeklogo.com/images/A/as-roma-60-s-logo-5422998DC3-seeklogo.com.png',
+    name: 'AS Roma',
+    country: 'Italie',
+    stadium: 'Olimpico',
+    coach: 'Di Francesco',
+    founded: 1899,
+    nbCup: 1
+  },
 ];
 
 // Middlewares
