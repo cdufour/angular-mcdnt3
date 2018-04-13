@@ -82,4 +82,31 @@ app.use(function(req, res, next) {
 // Routes
 app.get('/teams', (req, res) => res.json(teams));
 
+app.post('/teams', function(req, res) {
+  var id = getLastId(teams);
+  var team = {
+    id: id + 1,
+    logo: req.body.logo
+    name: req.body.name,
+    country: req.body.country,
+    stadium: req.body.stadium,
+    coach: req.body.coach,
+    founded: req.body.founded,
+    nbCup: req.body.nbCup
+  };
+  teams.push(team);
+  res.json(team);
+})
+
+// Helper functions
+function getLastId(arr) {
+  var maxId = 0;
+  for (var i=0; i<arr.length; i++) {
+    if (arr[i].id > maxId) {
+      maxId = array[i].id
+    }
+  }
+  return maxId;
+}
+
 app.listen(5000, () => console.log('Serveur écoute le port 5000...'));
