@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Team } from '../model/Team';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+const SERVER_URL = 'http://localhost:5000';
 
 @Injectable()
 export class TeamService {
@@ -10,14 +14,19 @@ export class TeamService {
     new Team('Strasbourg', 'strasbourg-logo.png', 'Laurey', 1906, 'La Meinau', 1, 'France'),
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   public getColors() {
     return this.colors;
   }
 
-  public getTeams() {
-    return this.teams;
+  // public getTeams() {
+  //   return this.teams;
+  // }
+
+  public getTeams(): Observable<any> {
+    // le service renvoie un Observable au composant demandeur
+    return this.http.get(SERVER_URL + '/teams');
   }
 
   public getTeamByName(name: string): Team {
@@ -28,6 +37,10 @@ export class TeamService {
 
   public addTeam(team: Team) {
     this.teams.push(team);
+  }
+
+  public getPlayersByTeam(name: string): Observable<any> {
+    return this.http.get(SERVER_URL + '/teams/' + name + '/players');
   }
 
 }

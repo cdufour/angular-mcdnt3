@@ -22,8 +22,32 @@ export class TeamsComponent implements OnInit {
   ngOnInit() {
     this.countries = COUNTRIES;
     this.team_display = 'a2';
-    this.teams = this.teamService.getTeams(); // initialisation de teams
-    this.teamsFiltered = this.teams; // initialisation de teamsFiltered
+    //this.teams = this.teamService.getTeams(); // initialisation de teams
+
+    this.teamService.getTeams()
+    .subscribe(res => {
+      // données reçues
+      console.log(typeof res);
+      //this.teams = res; Problème => getLogoUrl() non présente
+
+      // Transformation des données
+      res.forEach(data => {
+        let team: Team = new Team(
+          data.name,
+          data.logo,
+          data.coach,
+          data.founded,
+          data.stadium,
+          data.nbCup,
+          data.country
+        );
+        this.teams.push(team);
+      });
+      this.teamsFiltered = this.teams; // initialisation de teamsFiltered
+    }); // fin de subscribe
+
+
+
   }
 
   filterTeam() {

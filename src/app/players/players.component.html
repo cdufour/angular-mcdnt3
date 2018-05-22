@@ -1,0 +1,25 @@
+<!-- Filtres -->
+<select (change)="filterPlayers($event.target.value, 'current_team')">
+  <option value="0">Choisir une équipe</option>
+  <option *ngFor="let team of teams">{{team}}</option>
+</select>
+
+<select (change)="filterPlayers($event.target.value, 'position')">
+  <option value="0">Choisir un poste</option>
+  <option *ngFor="let position of positions">{{position}}</option>
+</select>
+
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Equipe actuelle</th>
+    <th>Poste</th>
+  </tr>
+  <tr *ngFor="let player of playersFiltered">
+    <td>{{player.lastname}}</td>
+    <td>{{player.firstname}}</td>
+    <td>{{player.current_team}}</td>
+    <td>{{player.position}}</td>
+  </tr>
+</table>

@@ -68,6 +68,45 @@ var teams = [
   },
 ];
 
+var players = [
+  {
+    id: 1,
+    picture: '',
+    lastname: 'Del Piero',
+    firstname: 'Ale',
+    current_team: 'Juventus',
+    country: 'Italie',
+    position: 'Attaquant'
+  },
+  {
+    id: 2,
+    picture: '',
+    lastname: 'Buffon',
+    firstname: 'Gianluigi',
+    current_team: 'Juventus',
+    country: 'Italie',
+    position: 'Gardien'
+  },
+  {
+    id: 3,
+    picture: '',
+    lastname: 'Areola',
+    firstname: 'Alphonse',
+    current_team: 'PSG',
+    country: 'France',
+    position: 'Gardien'
+  },
+  {
+    id: 4,
+    picture: '',
+    lastname: 'Rabiot',
+    firstname: 'Adrien',
+    current_team: 'PSG',
+    country: 'France',
+    position: 'Milieu'
+  },
+];
+
 // Middlewares
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -81,12 +120,18 @@ app.use(function(req, res, next) {
 
 // Routes
 app.get('/teams', (req, res) => res.json(teams));
+app.get('/players', (req, res) => res.json(players));
+app.get('/teams/:team/players', (req, res) => {
+  var team = req.params.team;
+  var playersFiltered = players.filter(player => player.current_team == team);
+  return res.json(playersFiltered);
+})
 
 app.post('/teams', function(req, res) {
   var id = getLastId(teams);
   var team = {
     id: id + 1,
-    logo: req.body.logo
+    logo: req.body.logo,
     name: req.body.name,
     country: req.body.country,
     stadium: req.body.stadium,
