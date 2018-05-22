@@ -9,6 +9,10 @@
       <h2>{{ team.name }}</h2>
       <p>Entraîneur <br>{{ team.coach }}</p>
       <p>Année de création <br>{{ team.founded }}</p>
+      <p>Joueurs</p>
+      <ul>
+        <li *ngFor="let player of players">{{player.lastname}}</li>
+      </ul>
     </div>
   </div>
 

@@ -12,6 +12,7 @@ import 'rxjs/add/operator/map';
 export class TeamComponent implements OnInit {
 
   @Input('team') team: Team;
+  players = [];
 
   constructor(
     private teamService: TeamService,
@@ -36,6 +37,10 @@ export class TeamComponent implements OnInit {
       this.activatedRoute.params
         .subscribe(item => {
           this.team = this.teamService.getTeamByName(item.name);
+          this.teamService.getPlayersByTeam(item.name)
+            .subscribe(res => {
+              this.players = res;
+            });
         });
 
     }
